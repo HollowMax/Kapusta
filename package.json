@@ -2,7 +2,7 @@
   "name": "Kapusta",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://iiihimeraiii.github.io/Kapusta/",
+  "homepage": "https://hollowmax.github.io/Kapusta/",
   "dependencies": {
     "@emotion/styled": "^11.10.5",
     "@react-hook/media-query": "^1.1.1",
