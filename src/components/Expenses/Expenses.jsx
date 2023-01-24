@@ -4,7 +4,6 @@ import styledComponents from './styleExpenses';
 import { formating } from 'components/Balance/BalanceForm';
 import { Chart } from 'components/Chart/Chart';
 import { useState } from 'react';
-import { useEffect } from 'react';
 
 const {
   ListOfBalanceChanges,
@@ -37,7 +36,7 @@ const Expenses = ({ onClick }) => {
 
     const data = statistics.data.expenses.expensesData;
 
-    const [_, expenses] = Object.entries(data).filter(el => {
+    const [, expenses] = Object.entries(data).filter(el => {
       return el[0] === filter;
     })[0] || [null, false];
 
@@ -63,9 +62,12 @@ const Expenses = ({ onClick }) => {
         Развлечения: entertainment,
         Здоровье: health,
         Транспорт: transport,
+       // eslint-disable-next-line no-useless-computed-key
         ['Всё для дома']: housing,
         Техника: technique,
+        // eslint-disable-next-line no-useless-computed-key
         ['Коммуналка и связь']: communal,
+       // eslint-disable-next-line no-useless-computed-key
         ['Спорт и хобби']: hobbies,
         Образование: education,
         Прочее: other,
@@ -234,7 +236,7 @@ const Expenses = ({ onClick }) => {
           <TitleOfBalanceChanges>"No data to display!"</TitleOfBalanceChanges>
         )}
       </BoxStats>
-      {filter && (
+      {filtredData() && (
         <BoxForSchedule>
           <Chart data={filtredData()} />{' '}
         </BoxForSchedule>

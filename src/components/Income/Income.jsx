@@ -26,7 +26,11 @@ const Income = ({ onClick }) => {
 
   const {
     incomes: {
-      incomesData: { ['З/П']: salary, ['Доп. доход']: income },
+      incomesData: {
+        // eslint-disable-next-line no-useless-computed-key
+        ['З/П']: salary,
+        // eslint-disable-next-line no-useless-computed-key
+        ['Доп. доход']: income },
       incomeTotal,
     },
   } = statistics.data;
@@ -40,7 +44,7 @@ const Income = ({ onClick }) => {
     if (!data) return;
     if (!filter) return;
 
-    const [_, incomes] = Object.entries(data).filter(
+    const [, incomes] = Object.entries(data).filter(
       el => el[0] === filter
     )[0] || [null, false];
 
@@ -105,10 +109,7 @@ const Income = ({ onClick }) => {
           <TitleOfBalanceChanges>"No data to display!"</TitleOfBalanceChanges>
         )}
       </BoxStats>
-      {filter && (<BoxForSchedule><Chart data={filtredData()} /></BoxForSchedule>)}
-          <Chart data={filtredData()} />
-        </BoxForSchedule>
-      )}
+      {filtredData() && (<BoxForSchedule><Chart data={filtredData()} /></BoxForSchedule>)}
     </>
   );
 };
